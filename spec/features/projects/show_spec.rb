@@ -31,7 +31,7 @@ RSpec.describe "Project show page", type: :feature do
 
                 expect(page).to have_content(news_chic.name)
                 expect(page).to have_content(news_chic.material)
-                expect(page).to have_content(recycled_material_challenge.challenge)
+                expect(page).to have_content(recycled_material_challenge.theme)
 
             end
         end
