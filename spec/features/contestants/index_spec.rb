@@ -30,14 +30,12 @@ RSpec.describe "Contestants index page", type: :feature do
         describe "When I viist the contestants index page ('/contestants')" do
             it "Shows a list of names of all the contestants and their projects" do
 
-        
-
                 visit "/contestants"
 
-                expect(page).to have_content(jay.name)
-                expect(page).to have_content(gretchen.name)
-                expect(page).to have_content(kentaro.name)
-                expect(page).to have_content(erin.name)
+                expect(page).to have_content(@jay.name)
+                expect(page).to have_content(@gretchen.name)
+                expect(page).to have_content(@kentaro.name)
+                expect(page).to have_content(@erin.name)
 
                 expect(page).to have_content(@news_chic.name)
                 expect(page).to have_content(@news_chic.name)
