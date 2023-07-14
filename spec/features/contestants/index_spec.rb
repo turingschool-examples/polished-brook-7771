@@ -24,7 +24,6 @@ RSpec.describe "Contestants index page", type: :feature do
         ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
         ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
 
-
     end
     describe "As a visitor" do
         describe "When I viist the contestants index page ('/contestants')" do
