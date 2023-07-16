@@ -1,14 +1,16 @@
-<% @contestants.each do |contestant| %>
-  <h2>
-    <a href="<%= contestant_path(contestant) %>"><%= contestant.name %></a>
-  </h2>
-  <p>Hometown: <%= contestant.hometown %></p>
-  <p>Years of Experience: <%= contestant.years_of_experience %></p>
-  <p>Age: <%= contestant.age %></p>
-  <p>Projects:</p>
-  <ul>
-    <% contestant.contestant_projects.each do |contestant_project| %>
-      <li><%= contestant_project.project.name %></li>
-    <% end %>
-  </ul>
-<% end %>
+<h1>Contestants</h1>
+<ul>
+  <% @contestants.each do |contestant| %>
+    <p>Contestant Name: <a href="<%= contestant_path(contestant) %>"><%= contestant.name %></a>
+      <p>
+        <p>Hometown: <%= contestant.hometown %></p>
+        <p>Years of Experience: <%= contestant.years_of_experience %></p>
+        <p>Age: <%= contestant.age %></p>
+        <p>Projects:</p>
+        <ul>
+          <% contestant.contestant_projects.each do |contestant_project| %>
+            <li><%= contestant_project.project.name %></li>
+          <% end %>
+        </ul>
+        <br>
+      <% end %>
