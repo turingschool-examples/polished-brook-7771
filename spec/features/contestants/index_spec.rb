@@ -11,9 +11,9 @@ RSpec.describe "contestants index page" do
     @kentaro = Contestant.create!(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     @jay = Contestant.create!(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
   
-    @kentaro_lit_fit = ContestantProject.create!(contestant: @kentaro, project: @lit_fit)
-    @kentaro_rug_tux = ContestantProject.create!(contestant: @kentaro, project: @rug_tux)
-    @jay_leather_feather = ContestantProject.create!(contestant: @jay, project: @leather_feather)
+    ContestantProject.create!(contestant: @kentaro, project: @lit_fit)
+    ContestantProject.create!(contestant: @kentaro, project: @rug_tux)
+    ContestantProject.create!(contestant: @jay, project: @leather_feather)
   end
 
   describe "as a visitor" do
