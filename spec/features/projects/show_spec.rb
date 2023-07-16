@@ -6,7 +6,7 @@ RSpec.describe "The Projects", type: :feature do
   end
   describe "#show page" do
     it "displays the projects name, material, and challenge theme" do
-      # project_id = @news_chic.challenge_id
+      
       challenge = Challenge.where(id: @news_chic.challenge_id)
 
       visit "/projects/#{@news_chic.id}"
