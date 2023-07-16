@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
+    <section>
+      <p><%= link_to "Home", root_path %></p>
+      <p><%= link_to "Challenges", challenges_path %></p>
+      <p><%= link_to "Contestants", contestants_path %></p>
+      <p><%= link_to "Projects", projects_path %></p>
+      <p><%= link_to "Contestants Projects", contestant_projects_path %></p>
+    </section>
     <%= yield %>
   </body>
 </html>
