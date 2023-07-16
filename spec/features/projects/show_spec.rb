@@ -12,7 +12,7 @@ RSpec.describe "Project show page" do
 
     @jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
     @gretchen = Contestant.create(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12)
-    @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
+    @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 9)
     @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
 
 
@@ -67,5 +67,30 @@ RSpec.describe "Project show page" do
     visit "/projects/#{@boardfit.id}"
 
     expect(page).to have_content("Number of Contestants: 3")
+  end
+
+#   User Story Extension 1 - Average years of experience for contestants by project
+
+# As a visitor,
+# When I visit a project's show page
+# I see the average years of experience for the contestants that worked on that project
+# (e.g.    Litfit
+#     Material: Lamp Shade
+#   Challenge Theme: Apartment Furnishings
+#   Number of Contestants: 3
+#   Average Contestant Experience: 10.25 years)
+  it "shows average years of experience for contestants who worked on the project" do
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Average Contestant Experience: 12.5 years")
+    
+    visit "/projects/#{@lit_fit.id}"
+
+    expect(page).to have_content("Average Contestant Experience: N/A years")
+
+    visit "/projects/#{@boardfit.id}"
+
+    expect(page).to have_content("Average Contestant Experience: 12.3 years")
+
   end
 end
