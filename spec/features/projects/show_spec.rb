@@ -16,5 +16,13 @@ RSpec.describe "The Projects", type: :feature do
       expect(page).to have_content(challenge.first.theme)
       expect(page).to have_content(challenge.first.project_budget)
     end
+
+    it "displays the count of contestants on the project" do
+
+      visit "/projects/#{@boardfit.id}"
+      
+      expect(page).to have_content(2)
+      
+    end
   end
 end
