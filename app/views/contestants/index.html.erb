@@ -1,0 +1,4 @@
+<% @contestants.each do |contestant| %>
+    <h3><%= contestant.name %></h3>
+    <p>Projects: <%= contestant.projects.pluck(:name).join(', ') %></p>
+<% end %>
