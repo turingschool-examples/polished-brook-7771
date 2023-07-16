@@ -52,5 +52,23 @@ RSpec.describe 'Projects', type: :feature do
       visit project_path(@project2)
       expect(page).to have_content('Number of Contestants: 2')
     end
+
+    # User Story Extension 1
+    it 'displays the average years of experience for the contestants that worked on that project on the project show page' do
+      @challenge1 = Challenge.create!(id: 1, theme: 'Recycled Material', project_budget: 1000)
+      @project1 = Project.create!(id: 1, name: 'News Chic', material: 'Newspaper', challenge_id: 1)
+      @project2 = Project.create!(id: 2, name: 'Upholstery Tuxedo', material: 'Couch', challenge_id: 1)
+      @contestant1 = Contestant.create!(id: 1, name: 'Kentaro Kameyama', age: 32, hometown: 'Denver, CO',
+                                        years_of_experience: 10)
+      @contestant2 = Contestant.create!(id: 2, name: 'Jay McCarroll', age: 40, hometown: 'Denver, CO',
+                                        years_of_experience: 20)
+
+      @contestant1.projects << @project1
+      @contestant1.projects << @project2
+      @contestant2.projects << @project2
+
+      visit project_path(@project1)
+      average_years_of_experience = (@contestant1.years_of_experience + @contestant2.years_of_experience) / 2.0
+    end
   end
 end
