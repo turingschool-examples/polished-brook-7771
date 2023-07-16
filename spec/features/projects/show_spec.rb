@@ -7,7 +7,7 @@ RSpec.describe "Project Show Page", type: :feature do
 
       @jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
       @gretchen = Contestant.create(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12)
-      @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
+      @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 7)
       @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
 
       @news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
@@ -15,7 +15,7 @@ RSpec.describe "Project Show Page", type: :feature do
 
       ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
       ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
-      ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
+      ContestantProject.create(contestant_id: @kentaro.id, project_id: @news_chic.id)
       ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
 
       visit "/projects/#{@news_chic.id}"
@@ -42,7 +42,11 @@ RSpec.describe "Project Show Page", type: :feature do
     end
 
     it "Has a count of the number of contestants on this project" do
-      expect(page).to have_content("Number of Contestants: 2")
+      expect(page).to have_content("Number of Contestants: 3")
+    end
+
+    it "Has the average years of experience for the contestants that worked on that project" do
+      expect(page).to have_content("Average Contestant Experience: 10.67 years")
     end
   end
 end
