@@ -25,7 +25,7 @@ RSpec.describe "project show page" do
 
         expect(page).to have_content("Litfit")
         expect(page).to have_content("Lamp")
-        expectd(page).to have_content("Apartment Furnishings")
+        expect(page).to have_content("Apartment Furnishings")
       end
     end
   end
