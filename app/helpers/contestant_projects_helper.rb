@@ -1,0 +1,2 @@
+module ContestantProjectsHelper
+end
