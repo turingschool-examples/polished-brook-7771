@@ -7,4 +7,8 @@ class Project < ApplicationRecord
   def contestant_count
     self.contestants.count
   end
+
+  def average_years_of_experience
+    self.contestants.average(:years_of_experience).round(2)
+  end
 end
