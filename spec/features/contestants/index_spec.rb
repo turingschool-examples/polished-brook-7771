@@ -18,7 +18,7 @@ RSpec.describe "contestants index page" do
 
   describe "as a visitor" do
     describe "when I visit the contestants index page" do
-      it "has a list of names of all the contestants" do
+      it "has a list of names of all the contestants and projects they are assigned to" do
 
         visit "/contestants"
 
