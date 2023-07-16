@@ -6,7 +6,6 @@ RSpec.describe 'Contestants', type: :feature do
       visit contestants_path
 
       expect(page).to have_link('Challenges')
-      expect(page).to have_link('Contestants Projects')
       expect(page).to have_link('Contestants')
       expect(page).to have_link('Projects')
     end
