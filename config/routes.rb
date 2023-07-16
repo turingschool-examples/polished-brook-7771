@@ -35,11 +35,11 @@ Rails.application.routes.draw do
   delete '/projects/:id', to: 'projects#destroy', as: 'delete_project'
 
   # Routes for contestant_projects
-  get '/contestant_projects', to: 'contestant_projects#index', as: 'contestant_projects'
-  get '/contestant_projects/new', to: 'contestant_projects#new', as: 'new_contestant_project'
-  get '/contestant_projects/:id', to: 'contestant_projects#show', as: 'contestant_project'
-  post '/contestant_projects', to: 'contestant_projects#create', as: 'create_contestant_project'
-  get '/contestant_projects/:id/edit', to: 'contestant_projects#edit', as: 'edit_contestant_project'
-  patch '/contestant_projects/:id', to: 'contestant_projects#update', as: 'update_contestant_project'
-  delete '/contestant_projects/:id', to: 'contestant_projects#destroy', as: 'delete_contestant_project'
+  get '/contestants_projects', to: 'contestants_projects#index', as: 'contestant_projects'
+  get '/contestants_projects/new', to: 'contestants_projects#new', as: 'new_contestant_project'
+  get '/contestants_projects/:id', to: 'contestants_projects#show', as: 'contestant_project'
+  post '/contestants_projects', to: 'contestants_projects#create', as: 'create_contestant_project'
+  get '/contestants_projects/:id/edit', to: 'contestants_projects#edit', as: 'edit_contestant_project'
+  patch '/contestants_projects/:id', to: 'contestants_projects#update', as: 'update_contestant_project'
+  delete '/contestants_projects/:id', to: 'contestants_projects#destroy', as: 'delete_contestant_project'
 end
