@@ -8,7 +8,7 @@ RSpec.describe Project, type: :model do
 
   describe "relationships" do
     it {should belong_to :challenge}
-    it {should have_many :contestants}
-    it {should have_many(:contestant_projects).through(:contestants)}
+    it {should have_many :contestant_projects}
+    it {should have_many(:contestants).through(:contestant_projects)}
   end
 end

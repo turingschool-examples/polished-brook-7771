@@ -7,6 +7,6 @@ RSpec.describe Challenge, type: :model do
   end
 
   describe "relationships" do
-    it {should have_many :projects}
+    it {should have_many :projects} #this entire test spec passes.
   end
 end
