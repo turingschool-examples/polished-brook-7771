@@ -7,13 +7,13 @@ RSpec.describe "Application show page" do
     lit_fit = furniture_challenge.projects.create(name: "Litfit", material: "Lamp")
 
     visit "/projects/#{upholstery_tux.id}"
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content("Project Name: Upholstery Tuxedo")
     expect(page).to have_content("Challenge Theme: Apartment Furnishings")
     expect(page).to have_content("Material: Couch")
 
     visit "/projects/#{lit_fit.id}"
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content("Project Name: Litfit")
     expect(page).to have_content("Challenge Theme: Apartment Furnishings")
     expect(page).to have_content("Material: Lamp")
