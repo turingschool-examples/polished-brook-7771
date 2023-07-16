@@ -93,4 +93,42 @@ RSpec.describe "Project show page" do
     expect(page).to have_content("Average Contestant Experience: 12.3 years")
 
   end
+
+#   User Story Extension 2 - Adding a contestant to a project
+
+# As a visitor,
+# When I visit a project's show page
+# I see a form to add a contestant to this project
+# When I fill out a field with an existing contestants id
+# And hit "Add Contestant To Project"
+# I'm taken back to the project's show page
+# And I see that the number of contestants has increased by 1
+# And when I visit the contestants index page
+# I see that project listed under that contestant's name
+
+  it "has a form to add a contestant" do
+    visit "/projects/#{@lit_fit.id}"
+
+    expect(page).to have_content("Contestant ID")
+    expect(page).to have_field(:add_contestant)
+    expect(page).to have_button("Add Contestant To Project")
+  end
+
+  it "can add a contestant to the project" do
+    visit "/projects/#{@lit_fit.id}"
+
+    expect(page).to have_content("Number of Contestants: 0")
+
+    fill_in(:add_contestant, with: @erin.id)
+    click_button("Add Contestant To Project")
+
+    expect(current_path).to eq("/projects/#{@lit_fit.id}")
+    expect(page).to have_content("Number of Contestants: 1")
+
+    visit "/contestants"
+
+    within("##{@erin.id}") do
+      expect(page).to have_content("Project(s): Boardfit, Litfit")
+    end
+  end
 end
