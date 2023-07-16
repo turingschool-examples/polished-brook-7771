@@ -1,0 +1,10 @@
+<h1><%= @contestant.name %></h1>
+<p>Age: <%= @contestant.age %></p>
+<p>Hometown: <%= @contestant.hometown %></p>
+<p>Years of Experience: <%= @contestant.years_of_experience %></p>
+<p>Projects:
+  <ul>
+    <% @contestants_projects.each do |project| %>
+      <li><%= project.name %></li>
+    <% end %>
+  </ul>
