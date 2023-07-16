@@ -50,7 +50,7 @@ RSpec.describe "Contestants index page" do
 
   it "lists each contestant's projects" do
     visit "/contestants"
-    save_and_open_page
+    
     within("##{@jay.id}") do
       expect(page).to have_content("Project(s): News Chic")
     end
