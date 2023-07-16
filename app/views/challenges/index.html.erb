@@ -1,1 +1,8 @@
 <h1>Challenges</h1>
+<ul>
+  <% @challenges.each do |challenge| %>
+    <p>Challenge Theme: <a href="<%= challenge_path(challenge) %>"><%= challenge.theme %></a>
+      <p>Project Budget: <%= challenge.project_budget %></p>
+      <br>
+    <% end %>
+  </ul>
