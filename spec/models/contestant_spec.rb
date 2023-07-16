@@ -9,7 +9,9 @@ RSpec.describe Contestant, type: :model do
   end
 
   describe "relationships" do
+    #none of these are working. No associations?
+    it {should have_many :challenges}
     it {should have_many :contestant_projects}
-    it {should have_many(:projects).through(:contestant_projects)}
+    it {should have_many(:projects).through(:challenges)}
   end
 end
