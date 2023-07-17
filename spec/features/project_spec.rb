@@ -27,17 +27,17 @@ RSpec.describe Project do
   end
 
 
-# User Story 1 of 3
-#(e.g.    Litfit
-#     Material: Lamp Shade
-#   Challenge Theme: Apartment Furnishings)
+  # User Story 1 of 3
+  #(e.g.    Litfit
+  #     Material: Lamp Shade
+  #   Challenge Theme: Apartment Furnishings)
 
   describe "As a visitor," do
     describe "When I visit a projects show page (/projects/:id)," do
       describe "I see that projects name and material" do
         it "And I also see the theme of the challenge that this project belongs to" do
 
-          visit ("/projects/#{@lit_fit.id}")
+          visit ("/projects/#{@news_chic.id}")
 
 
           expect(page).to have_content("News Chic")
@@ -47,5 +47,22 @@ RSpec.describe Project do
       end
     end
   end
+
+  # User Story 3 of 3
+  # (e.g.    Litfit
+  #   Material: Lamp Shade
+  # Challenge Theme: Apartment Furnishings
+  # Number of Contestants: 3 )
+  describe "As a visitor" do
+    describe "When I visit a project's show page" do
+      it "I see a count of the number of contestants on this project" do
+
+        visit ("/projects/#{@news_chic.id}")
+
+      end
+    end
+  end
+
+
 
 end
