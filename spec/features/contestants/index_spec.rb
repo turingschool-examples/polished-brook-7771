@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Projects show page", type: :feature do
-  describe "When I visit the Projects show page" do
+RSpec.describe "Contestants index page", type: :feature do
+  describe "When I visit the Contestants index page" do
     before do
       @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
       @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -25,22 +25,14 @@ RSpec.describe "Projects show page", type: :feature do
       ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
       ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
     end
-    
-    it "Displays a project name and materials" do
-      visit "/projects/#{@news_chic.id}"
 
-      expect(page).to have_content(@news_chic.name)
-      expect(page).to have_content(@news_chic.material)
+    it "Displays a list of names of all contestants" do
+      visit "/contestants"
 
-      expect(page).to_not have_content(@upholstery_tux.name)
-      expect(page).to_not have_content(@upholstery_tux.material)
-    end
-
-    it "Displays the theme of the challenge this project belongs to" do
-      visit "/projects/#{@news_chic.id}"
-
-      expect(page).to have_content(@recycled_material_challenge.theme)
-      expect(page).to_not have_content(@furniture_challenge.theme)
+      expect(page).to have_content(@jay.name)
+      expect(page).to have_content(@gretchen.name)
+      expect(page).to have_content(@kentaro.name)
+      expect(page).to have_content(@erin.name)
     end
   end
 end
