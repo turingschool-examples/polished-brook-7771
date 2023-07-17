@@ -30,7 +30,7 @@ describe "Projects page:" do
 
       expect(page).to have_content("#{@lit_fit.name}")
       expect(page).to have_content("#{@lit_fit.material}")
-      expect(page).to have_content("#{@lit_fit.projects.material}")
+      expect(page).to have_content("#{@lit_fit.challenge.theme}")
     end
   end
 end
