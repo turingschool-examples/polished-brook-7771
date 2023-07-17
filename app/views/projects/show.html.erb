@@ -2,3 +2,8 @@ name: <%= @project.name %>
 matterial: <%= @project.material %>
 Number of contestants: <%= @project.contestants.count %>
 Average Contestant Experience: <%= @project.average_experience.to_f %> years
+<br>
+"Add Contestant To Project"
+<form action="/projects/<%= @project.id %>/contestants" method="post">
+<p>Contestant Id: <input type="text" name="contestant_id"></p>
+<p><input type="submit" value="Add Contestant To Project"></p>

@@ -59,4 +59,40 @@ RSpec.feature "Projects", type: :feature do
     expect(page).to have_content(news_chic.material)
     expect(page).to have_content("Average Contestant Experience: 13.0 years")
   end
+
+#   As a visitor,
+# When I visit a project's show page
+# I see a form to add a contestant to this project
+# When I fill out a field with an existing contestants id
+# And hit "Add Contestant To Project"
+# I'm taken back to the project's show page
+# And I see that the number of contestants has increased by 1
+# And when I visit the contestants index page
+# I see that project listed under that contestant's name
+  it "can see a form to add a contestant to this project" do
+    recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+    news_chic = recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
+    jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
+    bob = Contestant.create(name: "Bob McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
+    ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
+    
+    visit "/project/#{news_chic.id}"
+
+
+    expect(page).to have_content(news_chic.name)
+    expect(page).to have_content(news_chic.material)
+    expect(page).to have_content("Average Contestant Experience: 13.0 years")
+    expect(page).to have_content("Number of contestants: 1")
+    expect(page).to have_content("Add Contestant To Project")
+    expect(page).to have_content("Contestant Id")
+    expect(page).to have_button("Add Contestant To Project")
+    
+    fill_in "contestant_id", with: "#{bob.id}"
+    click_button "Add Contestant To Project"
+
+    expect(current_path).to eq("/project/#{news_chic.id}")
+    expect(page).to have_content("Number of contestants: 2")
+  end
 end
+
+# I am not sure that I got the last challenge correct, can someone please review it and let me know if I did it correctly?
