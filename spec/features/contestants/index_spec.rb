@@ -38,7 +38,6 @@ RSpec.describe "Contestants index page", type: :feature do
     it "Displays a list of projects under each contestants name" do
       visit "/contestants"
 
-      save_and_open_page
       expect(page).to have_content(@jay.project_names)
       expect(page).to have_content(@gretchen.project_names)
       expect(page).to have_content(@kentaro.project_names)

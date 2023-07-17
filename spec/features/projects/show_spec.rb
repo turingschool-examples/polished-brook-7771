@@ -25,7 +25,7 @@ RSpec.describe "Projects show page", type: :feature do
       ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
       ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
     end
-    
+
     it "Displays a project name and materials" do
       visit "/projects/#{@news_chic.id}"
 
@@ -41,6 +41,19 @@ RSpec.describe "Projects show page", type: :feature do
 
       expect(page).to have_content(@recycled_material_challenge.theme)
       expect(page).to_not have_content(@furniture_challenge.theme)
+    end
+
+    it "Returns the count of the number of contestants on this project" do
+      visit "/projects/#{@news_chic.id}"
+      expect(page).to have_content("Number of Contestants: 2")
+
+      visit "/projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Number of Contestants: 2")
+
+      ContestantProject.create(contestant_id: @jay.id, project_id: @upholstery_tux.id)
+
+      visit "/projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Number of Contestants: 3")
     end
   end
 end
