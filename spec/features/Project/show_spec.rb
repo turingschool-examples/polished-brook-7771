@@ -33,7 +33,10 @@ RSpec.describe 'Project show page' do
         challenge_1 = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
         contestant_1 = Contestant.create!(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
         contestant_2 = Contestant.create!(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12)
-        project_1 = contestant_1.projects.create!(name: "News Chic", material: "Newspaper", challenge: challenge_1)
+        project_1 = Project.create!(name: "News Chic", material: "Newspaper", challenge: challenge_1)
+        project_1.contestants << contestant_1
+        project_1.contestants << contestant_2
+
 
         visit "/projects/#{project_1.id}"
 
