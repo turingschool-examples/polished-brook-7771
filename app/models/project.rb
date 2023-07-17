@@ -8,4 +8,8 @@ class Project < ApplicationRecord
   def contestant_count
     self.contestants.count
   end
+
+  def experience_average
+    contestants.average(:years_of_experience)
+  end
 end
