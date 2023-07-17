@@ -37,7 +37,7 @@ describe "Contestants index page:" do
       expect(page).to have_content("#{@gretchen.projects.name}")
       expect(page).to have_content("#{@kentaro.projects.name}")
       expect(page).to have_content("#{@erin.projects.name}")
-      save_and_open_page
+      
     end
   end
 end

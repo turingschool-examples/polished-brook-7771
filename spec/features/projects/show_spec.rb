@@ -27,10 +27,17 @@ describe "Projects show page:" do
   describe "When I visit a project's show page ('/projects/:id')" do
     it "I see that project's name and material And I also see the theme of the challenge that this project belongs to." do
       visit "/projects/#{@lit_fit.id}"
-
+      
       expect(page).to have_content("#{@lit_fit.name}")
       expect(page).to have_content("#{@lit_fit.material}")
       expect(page).to have_content("#{@lit_fit.challenge.theme}")
     end
+    
+    it "I see a count of the number of contestants on this project" do
+      visit "/projects/#{@news_chic.id}"
+    
+      expect(page).to have_content("Number of Contestants: #{@news_chic_count}")
+    end
+    
   end
 end
