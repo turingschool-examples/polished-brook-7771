@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Projects page:" do
+describe "Contestants index page:" do
   before(:each) do
     # Challenges =================================================================
     @recycled_material_challenge = Challenge.create!(theme: "Recycled Material", project_budget: 1000)
@@ -24,13 +24,19 @@ describe "Projects page:" do
     ContestantProject.create!(contestant_id: @erin.id, project_id: @boardfit.id)
   end
 
-  describe "When I visit a project's show page ('/projects/:id')" do
-    it "I see that project's name and material And I also see the theme of the challenge that this project belongs to." do
-      visit "/projects/#{@lit_fit.id}"
+  describe "When I visit the contestants index page ('/contestants')" do
+    it "I see a list of names of all the contestants And under each contestants name I see a list of the projects (names) that they've been on" do
+      visit "/contestants"
 
-      expect(page).to have_content("#{@lit_fit.name}")
-      expect(page).to have_content("#{@lit_fit.material}")
-      expect(page).to have_content("#{@lit_fit.challenge.theme}")
+      expect(page).to have_content("#{@jay.name}")
+      expect(page).to have_content("#{@gretchen.name}")
+      expect(page).to have_content("#{@kentaro.name}")
+      expect(page).to have_content("#{@erin.name}")
+      
+      expect(page).to have_content("#{@jay.projects.name}")
+      expect(page).to have_content("#{@gretchen.projects.name}")
+      expect(page).to have_content("#{@kentaro.projects.name}")
+      expect(page).to have_content("#{@erin.projects.name}")
     end
   end
 end
