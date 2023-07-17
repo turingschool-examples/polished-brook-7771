@@ -35,8 +35,14 @@ describe "Projects show page:" do
     
     it "I see a count of the number of contestants on this project" do
       visit "/projects/#{@news_chic.id}"
-    
+      
       expect(page).to have_content("Number of Contestants: #{@news_chic_count}")
+    end
+    
+    it "I see the average years of experience for the contestants that worked on that project" do
+      visit "/projects/#{@news_chic.id}"
+
+      expect(page).to have_content("Average Contestant Experience: #{@news_chic.average_years_experience}")
     end
     
   end
