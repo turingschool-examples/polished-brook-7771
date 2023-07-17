@@ -34,5 +34,12 @@ RSpec.describe Project, type: :feature do
       expect(page).to_not have_content(@upholstery_tux.name)
       expect(page).to_not have_content(@upholstery_tux.material)
     end
+
+    it "Displays the theme of the challenge this project belongs to" do
+      visit "/projects/#{@news_chic.id}"
+
+      expect(page).to have_content(@recycled_material_challenge.theme)
+      expect(page).to_not have_content(@furniture_challenge.theme)
+    end
   end
 end
