@@ -3,4 +3,10 @@
   <p>Challenge theme: <%= @project.challenge.theme %></p>
   <p>Number of contestants: <%= @project.contestants.count %>
   <p>Average experience of contestants: <%= @project.average_experience_of_contestants %>
+<br/>
+<%= form_with url: "/projects/#{@project.id}/contestants", method: :post do |form| %>
+<p> <%= form.label :contestant_id, "Enter contestant ID to add to project:" %> </p>
+<p> <%= form.text_field :contestant_id %> </p>
+<p> <%= form.submit "Submit" %> </p>
+<% end %>
 

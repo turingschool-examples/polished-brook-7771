@@ -56,7 +56,7 @@ RSpec.describe 'projects page' do
       expect(page).to have_content(2)
       expect(page).to_not have_content(3)
 
-      fill_in('Contestant id', with: @erin.id)
+      fill_in('contestant_id', with: @erin.id)
       click_button('Submit')
       expect(current_path).to eq("/projects/#{@news_chic.id}")
 
