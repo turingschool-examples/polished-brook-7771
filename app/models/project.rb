@@ -9,6 +9,6 @@ class Project < ApplicationRecord
     contestants.each do |contestant|
       total_experience += contestant.years_of_experience
     end
-    (total_experience.to_f / contestants.count).round(1)
+    (total_experience.to_f / contestants.count).round(2)
   end
 end
