@@ -43,6 +43,7 @@ RSpec.describe "projects show page" do
     visit "/projects/#{@news_chic.id}"
 
     expect(page).to have_content("2")
+
     visit "/projects/#{@boardfit.id}"
     
     expect(page).to have_content("1")
@@ -50,5 +51,19 @@ RSpec.describe "projects show page" do
     visit "/projects/#{@lit_fit.id}"
     
     expect(page).to have_content("0")
+  end
+
+  it "displays the average years of experiences for contestants that worked on it" do
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("12.5")
+
+    visit "/projects/#{@boardfit.id}"
+    
+    expect(page).to have_content("8")
+
+    visit "/projects/#{@upholstery_tux.id}"
+    
+    expect(page).to have_content("10")
   end
 end
