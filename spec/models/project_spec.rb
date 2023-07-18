@@ -38,7 +38,9 @@ RSpec.describe Project, type: :model do
     end
 
     it 'can calculate average years of experience for all contestants working on project' do
+      ContestantProject.create!(contestant_id: @erin.id, project_id: @upholstery_tux.id)
       expect(@news_chic.average_experience_of_contestants).to eq(12.5)
+      expect(@upholstery_tux.average_experience_of_contestants).to eq(11.67)
     end
   end
 end
