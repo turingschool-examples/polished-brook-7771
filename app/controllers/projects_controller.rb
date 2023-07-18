@@ -1,0 +1,9 @@
+class ProjectsController < ApplicationController 
+
+  def show
+    require 'pry'; binding.pry
+    @challenge = Challenge.find(params[:id])
+    
+    project =  Project.find(params[:id])
+  end
+end
