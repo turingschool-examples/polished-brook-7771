@@ -36,9 +36,9 @@ RSpec.describe "contestants index page" do
 
   it "displays a list of the contestants project names" do
     visit "/contestants"
-save_and_open_page
+    
     expect(page).to_not have_content("Litfit")
-    expect(page).to have_content("News Chic, Upholstery Tuxedo")
-    expect(page).to have_content("Upholstery Tuxedo, Boardfit")
+    expect(page).to have_content("Projects: News Chic, Upholstery Tuxedo")
+    expect(page).to have_content("Projects: Boardfit, Upholstery Tuxedo")
   end
 end
