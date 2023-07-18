@@ -50,7 +50,6 @@ RSpec.describe 'contestants index page' do
   it "also lists each contestants projects" do 
     visit "/contestants"
 
-    save_and_open_page
     expect(page).to have_content("News Chic")
     expect(page).to have_content("Boardfit")
   end
