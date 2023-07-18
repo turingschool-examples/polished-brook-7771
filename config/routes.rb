@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   get '/projects/:id', to: 'projects#show'
   get '/contestants', to: 'contestants#index'
+  get '/crags/new', to: 'crags#new'
+  post '/crags', to: 'crags#create'
+
 end

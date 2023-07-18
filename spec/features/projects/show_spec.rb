@@ -16,7 +16,6 @@ RSpec.describe 'projects page' do
     @kentaro = Contestant.create!(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     @erin = Contestant.create!(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
     
-    
     ContestantProject.create!(contestant_id: @jay.id, project_id: @news_chic.id)
     ContestantProject.create!(contestant_id: @gretchen.id, project_id: @news_chic.id)
     ContestantProject.create!(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
@@ -50,6 +49,18 @@ RSpec.describe 'projects page' do
     it 'shows average years of experience for all contestants on the project' do
       visit "/projects/#{@news_chic.id}"
       expect(page).to have_content(@news_chic.average_experience_of_contestants)
+    end
+
+    it 'has a form to add contestants' do
+      visit "/projects/#{@news_chic.id}"
+      expect(page).to have_content(2)
+      expect(page).to_not have_content(3)
+
+      fill_in('Contestant id', with: @erin.id)
+      click_button('Submit')
+      expect(current_path).to eq("/projects/#{@news_chic.id}")
+
+      expect(page).to have_content(3)
     end
   end
 end
