@@ -57,7 +57,6 @@ RSpec.describe "Contestants Index Page ('/contestants')", type: :feature do
         end
       end
 
-
     end
   end
 end
