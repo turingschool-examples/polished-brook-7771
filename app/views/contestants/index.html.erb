@@ -1,0 +1,8 @@
+<h1>Contestants</h1>
+
+<% @contestants.each do |contestant| %>
+  <div id="cont-<%= contestant.id %>">
+    <h3><%= contestant.name %></h3>
+    <p><b>Projects: </b><%=  contestant.projects.pluck(:name).to_sentence(words_connector: ", ",two_words_connector: ", ") %></p>
+  </div>
+<% end %>
