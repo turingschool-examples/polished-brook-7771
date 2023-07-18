@@ -1,5 +1,9 @@
 <h1>Name of All Contestants</h1>
 
-<% @contestants.each do |contestant| %>
-  <h3>Name: <%= contestant.name %></h3>
+<% @contestants.each do |contestant| %> <br>
+  <h2>Name: <%= contestant.name %></h2>
+  <h3>Current Projects:</h3>
+  <% contestant.projects.each do |project| %></h3>
+  <%= project.name %> <hr>
+  <% end %>
 <% end %>
