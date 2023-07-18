@@ -5,6 +5,11 @@ class Project < ApplicationRecord
   has_many :contestants, through: :contestant_projects
 
   def num_contestants
-    self.contestants.count
+    contestants.count
   end
+
+  def average_experience
+    contestants.average(:years_of_experience)
+  end
+
 end
