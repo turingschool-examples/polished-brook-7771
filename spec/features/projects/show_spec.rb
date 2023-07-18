@@ -23,8 +23,8 @@ require 'rails_helper'
       it "shows the projects name material"do 
         visit "/projects/#{@news_chic.id}"
         
-
-      
+        expect(page).to have_content(@news_chic.name)
+        expect(page).to have_content(@news_chic.material) 
       end
     end
   end
