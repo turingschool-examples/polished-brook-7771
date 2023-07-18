@@ -24,7 +24,7 @@ describe "projects show page" do
   end
     it "shows name of theme" do 
       visit "/projects/#{@news_chic.id}"
-
+      
       expect(page).to have_content(@news_chic.challenge.theme)
     end
 end
