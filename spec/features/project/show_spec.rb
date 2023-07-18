@@ -10,10 +10,11 @@ RSpec.describe 'Project Show Page' do
         news_chic = recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
         boardfit = recycled_material_challenge.projects.create(name: "Boardfit", material: "Cardboard Boxes")
 
-        visit "/projects/#{boardfit.id}"
+        visit "/projects/#{news_chic.id}"
 
-        expect(page).to have_content(@project.name)
-        # expect(page).to have_content(@project.material)
+        expect(page).to have_content(news_chic.name)
+        expect(page).to have_content(news_chic.material)
+        expect(page).to have_content(recycled_material_challenge.theme)
       end
     end
   end
