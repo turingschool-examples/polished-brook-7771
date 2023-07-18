@@ -3,5 +3,6 @@
 <p> Project Material: <%= @project.material %> </p>
 <p> Challenge </p>
 <% @challenge.each do |challenge| %>
-  <p> <%= challenge.theme %> </p>
+  <p> Theme: <%= challenge.theme %> </p>
+  <p> Number of Contestants: <%= @contestants.count %> </p>
 <% end %>
