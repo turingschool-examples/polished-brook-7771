@@ -7,6 +7,7 @@ describe "project show page" do
     
     @jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
     @gretchen = Contestant.create(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12)
+    @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     
     @news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
     
@@ -68,6 +69,29 @@ describe "project show page" do
   it "has average year of experience for contastants by project" do
     visit "/projects/#{@news_chic.id}"
     expect(page).to have_content("Average Experience of Contestants: 12.5")
+  end
+
+# User Story Extension 2 - Adding a contestant to a project
+
+# As a visitor,
+# When I visit a project's show page
+# I see a form to add a contestant to this project
+# When I fill out a field with an existing contestants id
+# And hit "Add Contestant To Project"
+# I'm taken back to the project's show page
+# And I see that the number of contestants has increased by 1
+# And when I visit the contestants index page
+# I see that project listed under that contestant's name
+
+  it "can add a contestant to a project" do
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Contestants for this Project: 2")
+
+    fill_in("contestant_id", with: @kentaro.id)
+    click_button "Add"
+    
+    expect(page).to have_content("Contestants for this Project: 3")
   end
 
 end

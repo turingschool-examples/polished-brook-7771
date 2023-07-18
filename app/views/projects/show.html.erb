@@ -5,3 +5,9 @@
 <p>Material Used: <%= @project.material %></p>
 <p>Contestants for this Project: <%= @project.num_contestants %></p>
 <p>Average Experience of Contestants: <%= @project.average_experience %></p>
+
+<%= form_with url: "/projects/#{@project.id}/contestants", method: :post do |form| %>
+  <p> <%= form.label :contestant_id, "Enter a Contestants ID number to add them to this Project:" %> </p>
+  <p> <%= form.text_field :contestant_id %> </p>
+  <p> <%= form.submit "Add" %> </p>
+<% end %>
