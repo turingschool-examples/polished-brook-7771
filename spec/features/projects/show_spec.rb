@@ -31,15 +31,15 @@ RSpec.describe 'projects page' do
       visit "/projects/#{@news_chic.id}"
       expect(page).to have_content(@news_chic.name)
       expect(page).to have_content(@news_chic.material)
-      expect(page).to have_content(@boardfit.name)
-      expect(page).to have_content(@boardfit.material)
-      expect(page).to have_content(@recycled_material_challenge.material)
-
+      expect(page).to have_content(@recycled_material_challenge.theme)
+      
+      expect(page).to_not have_content(@boardfit.name)
+      expect(page).to_not have_content(@boardfit.material)
       expect(page).to_not have_content(@upholstery_tux.name)
       expect(page).to_not have_content(@upholstery_tux.material)
       expect(page).to_not have_content(@lit_fit.name)
       expect(page).to_not have_content(@lit_fit.material)
-      expect(page).to_not have_content(@furniture_challenge.material)
+      expect(page).to_not have_content(@furniture_challenge.theme)
     end
   end
 end
