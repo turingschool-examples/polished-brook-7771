@@ -1,0 +1,7 @@
+<h1>Project Show Page</h1>
+<p>Project Name: <%= @project.name %></p>
+<p> Project Material: <%= @project.material %> </p>
+<p> Challenge </p>
+<% @challenge.each do |challenge| %>
+  <p> <%= challenge.theme %> </p>
+<% end %>
